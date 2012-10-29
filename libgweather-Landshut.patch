@@ -1,0 +1,20 @@
+diff -aurN libgweather-2.26.1.orig/data/Locations.xml.in libgweather-2.26.1/data/Locations.xml.in
+--- libgweather-2.26.1.orig/data/Locations.xml.in	2009-04-27 20:28:32.000000000 +0200
++++ libgweather-2.26.1/data/Locations.xml.in	2009-04-27 20:58:15.000000000 +0200
+@@ -13959,6 +13959,16 @@
+           </location>
+         </city>
+         <city>
++          <!-- A city in Bavaria in Germany -->
++          <_name>Landshut</_name>
++          <coordinates>48.534141 12.151083</coordinates>
++          <location>
++            <name>Landshut</name>
++            <code>EDML</code>
++            <coordinates>48.512800 12.035000</coordinates>
++          </location>
++        </city>
++        <city>
+           <!-- A city in Bavaria in Germany.
+                "Munich" is the traditional English name.
+                The local name is "München".
