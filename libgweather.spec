@@ -1,19 +1,19 @@
 Summary:	Library to access weather information from online services for numerous locations
 Name:		libgweather
-Version:	3.8.2
+Version:	3.10.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgweather/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	33c947222929d023f0446796c322caaf
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgweather/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	fe37c6b8f58fd678a7bcfdbdfe4bd1bf
 Patch0:		%{name}-Landshut.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+3-devel
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	intltool
-BuildRequires:	libsoup-gnome-devel
+BuildRequires:	libsoup-gnome-devel >= 2.44.0
 BuildRequires:	libtool
 BuildRequires:	pkg-config
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,10 +54,10 @@ libgweather API documentation.
 %patch0 -p1
 
 # https://bugzilla.gnome.org/show_bug.cgi?id=614645
-sed -i -e 's|gnome|hicolor|g' icons/Makefile.am
+%{__sed} -i -e 's|gnome|hicolor|g' icons/Makefile.am
 
 # kill gnome common deps
-sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
+%{__sed} -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
     -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
@@ -84,13 +84,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,en@shaw,es_*}
-rm -rf $RPM_BUILD_ROOT%{_iconsdir}/hicolor/scalable
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,en@shaw,es_*}
+%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/hicolor/scalable
 
-%find_lang libgweather-3.0
-
-find $RPM_BUILD_ROOT -name "Locations.*.xml" | sed 's:'"$RPM_BUILD_ROOT"'::
-s:\(.*\)/Locations\.\([^.]*\)\.xml:%lang(\2) \1/Locations.\2.xml:' | sort | uniq >> libgweather-3.0.lang
+%find_lang libgweather-3.0 --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -119,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libgweather-3.0
 %{_pkgconfigdir}/gweather-3.0.pc
 %{_datadir}/gir-1.0/GWeather-3.0.gir
+%{_datadir}/vala/vapi/gweather-3.0.vapi
 
 %files data -f libgweather-3.0.lang
 %defattr(644,root,root,755)
