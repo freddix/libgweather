@@ -77,6 +77,7 @@ libgweather API documentation.
 	--with-html-dir=%{_gtkdocdir}	\
 	--with-zoneinfo-dir=%{_datadir}/zoneinfo
 %{__make}
+%{__make} check
 
 %install
 rm -rf $RPM_BUILD_ROOT
