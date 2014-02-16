@@ -1,11 +1,11 @@
 Summary:	Library to access weather information from online services for numerous locations
 Name:		libgweather
-Version:	3.10.1
+Version:	3.10.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgweather/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	df787682656ba8662b719ae24b0dd3e0
+# Source0-md5:	94b2dd2ffa185e772a32e125ad7376ef
 Patch0:		%{name}-Landshut.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
