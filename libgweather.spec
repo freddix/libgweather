@@ -1,19 +1,19 @@
 Summary:	Library to access weather information from online services for numerous locations
 Name:		libgweather
-Version:	3.10.2
+Version:	3.12.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgweather/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	94b2dd2ffa185e772a32e125ad7376ef
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgweather/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	5bba1f4fcfcd175e34859b6cfbc51637
 Patch0:		%{name}-Landshut.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gtk+3-devel >= 3.12.0
 BuildRequires:	intltool
-BuildRequires:	libsoup-gnome-devel >= 2.44.0
+BuildRequires:	libsoup-gnome-devel >= 2.46.0
 BuildRequires:	libtool
 BuildRequires:	pkg-config
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -87,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,en@shaw,es_*}
 %{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/hicolor/scalable
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang libgweather-3.0 --all-name
 
